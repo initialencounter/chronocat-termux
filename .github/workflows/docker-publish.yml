@@ -1,9 +1,10 @@
-name: Docker Publish
+name: Build rootfs
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
 
 jobs:
   publish:
