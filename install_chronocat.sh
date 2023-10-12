@@ -79,7 +79,7 @@ screen -wipe
 if screen -list | grep -q "ccr"; then
     screen -S cc -X quit
 else
-    # 启动 qsinServer
+    # 启动 cc
     echo "正在启动 cc"
 fi
 screen -dmS cc
