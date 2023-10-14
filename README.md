@@ -3,6 +3,11 @@
 本项目提供了在安卓手机上安装 [chronocat](https://chronocat.vercel.app/) 的方法
 使用 [ZeroTermux](https://github.com/hanxinhao000/ZeroTermux) + debian-sid + xfce4 + linuxqq 制作
 
+- 基于 Linux QQ
+- 运行内存大于 600M
+- 恢复包大小 795 MB（压缩后）
+- 支持持久化 QQ 登录状态和数据
+
 # 目录：
 - 1. 安装 ZeroTermux 和 VncView
 - 2. 安装 chronocat
