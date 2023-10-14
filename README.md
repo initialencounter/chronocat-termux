@@ -58,14 +58,14 @@
    输入命令
    ```shell
    pkg upgrade;
-   bash -c "$(curl -L https://gitee.com/initencunter/chronocat-termux/raw/master/install_debian.sh)"
+   bash -c "$(curl -L https://gitee.com/initencunter/chronocat-termux/raw/main/install_debian.sh)"
    ```
 #### 2.2.2 安装图形界面 
    ```shell
    # 进入容器
    bash debian-sid-arm64.sh
    # 安装 tmoe
-   pkg install -y curl ; bash -c "$(curl -L gitee.com/mo2/linux/raw/2/2)"
+   apt install -y curl ; bash -c "$(curl -L gitee.com/mo2/linux/raw/2/2)"
    # 一路回车，选择tools
    # 再选择安装 xfce 图形界面 以及 tigervnc
    ```
