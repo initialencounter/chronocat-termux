@@ -62,7 +62,6 @@
 #### 2.2.1 安装linux容器
    输入命令
    ```shell
-   pkg upgrade;
    bash -c "$(curl -L https://gitee.com/initencunter/chronocat-termux/raw/main/install_debian.sh)"
    ```
 #### 2.2.2 安装图形界面 
