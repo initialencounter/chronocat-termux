@@ -20,6 +20,7 @@ else
 fi
 
 mkdir $sys_name-$AH
+apt update
 apt install neofetch wget aria2 proot -y
 
 
