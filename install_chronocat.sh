@@ -15,14 +15,6 @@ else
     exit 1
 fi
 
-# 安装依赖
-echo "正在安装依赖"
-
-apt-get update && apt-get install -y openbox curl unzip x11vnc xvfb fluxbox supervisor libnotify4 libnss3 xdg-utils libsecret-1-0 libgbm1 libasound2 fonts-wqy-zenhei git gnutls-bin screen
-
-# 使用 tmoe 安装 图形化界面 
-bash -c "$(curl -L gitee.com/mo2/linux/raw/2/2)"
-
 # 安装Linux QQ
 curl -o /root/linuxqq_3.1.2-13107_arm64.deb https://dldir1.qq.com/qqfile/qq/QQNT/ad5b5393/linuxqq_3.1.2-13107_arm64.deb
 dpkg -i /root/linuxqq_3.1.2-13107_arm64.deb && apt-get -f install -y && rm /root/linuxqq_3.1.2-13107_arm64.deb
@@ -37,10 +29,10 @@ rm /tmp/LiteLoaderQQNT.zip
 sed -i 's/"main": ".\/app_launcher\/index.js"/"main": ".\/LiteLoader"/' /opt/QQ/resources/app/package.json
 
 # 安装chronocat  
-# curl -L -o /tmp/chronocat-llqqnt.zip https://ghproxy.com/https://github.com/chrononeko/chronocat/releases/download/v0.0.48/chronocat-llqqnt-v0.0.48.zip
-# mkdir -p /root/LiteLoaderQQNT/plugins
-# unzip /tmp/chronocat-llqqnt.zip -d /root/LiteLoaderQQNT/plugins/
-# rm /tmp/chronocat-llqqnt.zip
+curl -L -o /tmp/chronocat-llqqnt.zip https://ghproxy.com/https://github.com/chrononeko/chronocat/releases/download/v0.0.48/chronocat-llqqnt-v0.0.48.zip
+mkdir -p /root/LiteLoaderQQNT/plugins
+unzip /tmp/chronocat-llqqnt.zip -d /root/LiteLoaderQQNT/plugins/
+rm /tmp/chronocat-llqqnt.zip
 
 echo "正在删除缓存"
 apt-get clean

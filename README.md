@@ -73,21 +73,11 @@
    # 一路回车，选择tools
    # 再选择安装 xfce 图形界面 以及 tigervnc
    ```
-### 2.2.3 安装 linux QQ
+### 2.2.3 安装 chronocat
    ```shell
-   # 安装Linux QQ
-   curl -o /root/linuxqq_3.1.2-13107_arm64.deb https://dldir1.qq.com/qqfile/qq/QQNT/ad5b5393/linuxqq_3.1.2-13107_arm64.deb
-   dpkg -i /root/linuxqq_3.1.2-13107_arm64.deb && apt-get -f install -y && rm /root/linuxqq_3.1.2-13107_arm64.deb
+   bash -c "$(curl -L https://gitee.com/initencunter/chronocat-termux/raw/main/install_chronocat.sh)"
    ```
-### 2.2.4 安装 LiteLoader
-   ```shell
-   curl -L -o /tmp/LiteLoaderQQNT.zip https://github.com/LiteLoaderQQNT/LiteLoaderQQNT/releases/download/0.5.3/LiteLoaderQQNT.zip
-   unzip /tmp/LiteLoaderQQNT.zip -d /opt/QQ/resources/app/
-   rm /tmp/LiteLoaderQQNT.zip
-   ```
-### 2.2.5 安装 chronocat
-   先不在这会儿安装，等登录 qq 后，打开 qq 设置里的 LiteLoader 插件市场来安装 Chronocat
-### 2.2.6 创建一个新用户并登录
+### 2.2.4 创建一个新用户并登录
    ```shell
    # ie改成你的用户名
    adduser ie
