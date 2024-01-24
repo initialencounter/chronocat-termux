@@ -28,41 +28,34 @@ RUN apt-get update && apt-get install -y \
 
 # 安装novnc
 RUN git config --global http.sslVerify false && git config --global http.postBuffer 1048576000
-RUN cd /opt && git clone https://github.com/novnc/noVNC.git
-RUN cd opt/noVNC/utils && git clone https://github.com/novnc/websockify.git
+RUN cd /opt && git clone https://mirror.ghproxy.com/https://github.com/novnc/noVNC.git
+RUN cd opt/noVNC/utils && git clone https://mirror.ghproxy.com/https://github.com/novnc/websockify.git
 RUN cp /opt/noVNC/vnc.html /opt/noVNC/index.html     
 
 # 安装Linux QQ
-RUN curl -o /root/linuxqq_3.2.5-20979_arm64.deb https://dldir1.qq.com/qqfile/qq/QQNT/c64ca459/linuxqq_3.2.5-20979_arm64.deb
-RUN dpkg -i /root/linuxqq_3.2.5-20979_arm64.deb && apt-get -f install -y && rm /root/linuxqq_3.2.5-20979_arm64.deb
+RUN curl -o /root/linuxqq_3.2.5-20979_amd64.deb https://dldir1.qq.com/qqfile/qq/QQNT/c64ca459/linuxqq_3.2.5-20979_amd64.deb
+RUN dpkg -i /root/linuxqq_3.2.5-20979_amd64.deb && apt-get -f install -y && rm /root/linuxqq_3.2.5-20979_amd64.deb
 
 # 安装LiteLoader
-RUN curl -L -o /tmp/LiteLoaderQQNT.zip https://github.com/LiteLoaderQQNT/LiteLoaderQQNT/releases/download/1.0.2/LiteLoaderQQNT.zip \
+RUN curl -L -o /tmp/LiteLoaderQQNT.zip https://mirror.ghproxy.com/https://github.com/LiteLoaderQQNT/LiteLoaderQQNT/releases/download/1.0.2/LiteLoaderQQNT.zip \
     && unzip /tmp/LiteLoaderQQNT.zip -d /opt/QQ/resources/app/ \
     && rm /tmp/LiteLoaderQQNT.zip
 # 修改/opt/QQ/resources/app/package.json文件
 RUN sed -i 's/"main": ".\/app_launcher\/index.js"/"main": ".\/LiteLoader"/' /opt/QQ/resources/app/package.json
 
 # 安装chronocat  
-RUN curl -L -o /tmp/chronocat-llqqnt.zip https://ghproxy.com/https://github.com/chrononeko/chronocat/releases/download/v0.0.54/chronocat-llqqnt-v0.0.54.zip \
-  && mkdir -p /root/LiteLoaderQQNT/plugins \
-  && unzip /tmp/chronocat-llqqnt.zip -d /root/LiteLoaderQQNT/plugins/ \
-  && rm /tmp/chronocat-llqqnt.zip
+COPY chronocat-llqqntv1-v0.0.71.zip /tmp/chronocat-llqqntv1-v0.0.71.zip
+RUN mkdir -p /root/LiteLoaderQQNT/plugins \
+  && unzip /tmp/chronocat-llqqntv1-v0.0.71.zip -d /root/LiteLoaderQQNT/plugins/ \
+  && rm /tmp/chronocat-llqqntv1-v0.0.71.zip
 
 # 创建必要的目录
 RUN mkdir -p ~/.vnc
 
 # 创建启动脚本
-RUN echo "#!/bin/bash" > ~/start.sh
-RUN echo "rm /tmp/.X1-lock" >> ~/start.sh
-RUN echo "Xvfb :1 -screen 0 1280x1024x16 &" >> ~/start.sh
-RUN echo "export DISPLAY=:1" >> ~/start.sh
-RUN echo "fluxbox &" >> ~/start.sh
-RUN echo "x11vnc -display :1 -noxrecord -noxfixes -noxdamage -forever -rfbauth ~/.vnc/passwd &" >> ~/start.sh
-RUN echo "nohup /opt/noVNC/utils/novnc_proxy --vnc localhost:5900 --listen 6081 --file-only &" >> ~/start.sh
-RUN echo "x11vnc -storepasswd \$VNC_PASSWD ~/.vnc/passwd" >> ~/start.sh
-RUN echo "su -c 'qq' root" >> ~/start.sh
-RUN chmod +x ~/start.sh
+COPY start.sh /root/start.sh
+RUN sed -i "s/VNC_PASSWD/$VNC_PASSWD/" /root/start.sh \
+  && chmod +x ~/start.sh
 
 # 配置supervisor
 RUN echo "[supervisord]" > /etc/supervisor/supervisord.conf
