@@ -65,4 +65,4 @@ RUN echo "[program:x11vnc]" >> /etc/supervisor/supervisord.conf
 RUN echo "command=/usr/bin/x11vnc -display :1 -noxrecord -noxfixes -noxdamage -forever -rfbauth ~/.vnc/passwd" >> /etc/supervisor/supervisord.conf
 
 # 设置容器启动时运行的命令
-CMD ["/bin/bash"]
+ENTRYPOINT ["/root/start.sh"]
