@@ -11,4 +11,4 @@ nohup /opt/noVNC/utils/novnc_proxy --vnc localhost:5900 --listen 6081 --file-onl
 sleep 2
 x11vnc -storepasswd vncpasswd ~/.vnc/passwd
 sleep 2
-qq --no-sandbox --chrono-mode=headless3
+qq --no-sandbox
