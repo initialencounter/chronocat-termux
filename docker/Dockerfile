@@ -1,9 +1,11 @@
-# 使用基于Ubuntu 22.04的基础映像
-FROM ubuntu:22.04
+FROM phusion/baseimage:jammy-1.0.1
 
 # 设置环境变量
 ENV DEBIAN_FRONTEND=noninteractive
 ENV VNC_PASSWD=vncpasswd
+ARG TARGETARCH
+ARG BUILD_CHRONO_VERSION
+ENV DEBIAN_FRONTEND=noninteractive
 
 # 安装必要的软件包
 RUN apt-get update && apt-get install -y \
@@ -38,15 +40,15 @@ RUN dpkg -i /root/linuxqq_3.2.5-20979_amd64.deb && apt-get -f install -y && rm /
 
 # 安装LiteLoader
 RUN curl -L -o /tmp/LiteLoaderQQNT.zip https://mirror.ghproxy.com/https://github.com/LiteLoaderQQNT/LiteLoaderQQNT/releases/download/1.0.2/LiteLoaderQQNT.zip \
-    && unzip /tmp/LiteLoaderQQNT.zip -d /opt/QQ/resources/app/ \
+    && mkdir -p /opt/QQ/resources/app/LiteLoader \
+    && unzip /tmp/LiteLoaderQQNT.zip -d /opt/QQ/resources/app/LiteLoader \
+    && sed -i '1s/^/require("\/opt\/QQ\/resources\/app\/LiteLoader");\n/' /opt/QQ/resources/app/app_launcher/index.js \
     && rm /tmp/LiteLoaderQQNT.zip
-# 修改/opt/QQ/resources/app/package.json文件
-RUN sed -i 's/"main": ".\/app_launcher\/index.js"/"main": ".\/LiteLoader"/' /opt/QQ/resources/app/package.json
 
 # 安装chronocat  
 COPY chronocat-llqqntv1-v0.0.71.zip /tmp/chronocat-llqqntv1-v0.0.71.zip
-RUN mkdir -p /root/LiteLoaderQQNT/plugins \
-  && unzip /tmp/chronocat-llqqntv1-v0.0.71.zip -d /root/LiteLoaderQQNT/plugins/ \
+RUN mkdir -p /opt/QQ/resources/app/LiteLoader/plugins \
+  && unzip /tmp/chronocat-llqqntv1-v0.0.71.zip -d /opt/QQ/resources/app/LiteLoader/plugins/ \
   && rm /tmp/chronocat-llqqntv1-v0.0.71.zip
 
 # 创建必要的目录
@@ -55,8 +57,7 @@ RUN mkdir -p ~/.vnc
 # 创建启动脚本
 COPY start.sh /root/start.sh
 RUN sed -i "s/VNC_PASSWD/$VNC_PASSWD/" /root/start.sh \
-  && chmod +x ~/start.sh
-
+  && chmod +x /root/start.sh
 # 配置supervisor
 RUN echo "[supervisord]" > /etc/supervisor/supervisord.conf
 RUN echo "nodaemon=true" >> /etc/supervisor/supervisord.conf
@@ -64,4 +65,4 @@ RUN echo "[program:x11vnc]" >> /etc/supervisor/supervisord.conf
 RUN echo "command=/usr/bin/x11vnc -display :1 -noxrecord -noxfixes -noxdamage -forever -rfbauth ~/.vnc/passwd" >> /etc/supervisor/supervisord.conf
 
 # 设置容器启动时运行的命令
-CMD ["/bin/bash", "-c", "/root/start.sh"]
+CMD ["/bin/bash"]
