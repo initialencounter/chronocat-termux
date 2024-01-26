@@ -41,10 +41,9 @@ curl -L -o /tmp/LiteLoaderQQNT.zip https://mirror.ghproxy.com/https://github.com
     rm /tmp/LiteLoaderQQNT.zip
 
 # 安装chronocat  
-cp chronocat-llqqntv1-v0.0.71.zip /tmp/chronocat-llqqntv1-v0.0.71.zip
 mkdir -p /opt/QQ/resources/app/LiteLoader/plugins && \
-  unzip /tmp/chronocat-llqqntv1-v0.0.71.zip -d /opt/QQ/resources/app/LiteLoader/plugins/ && \
-  rm /tmp/chronocat-llqqntv1-v0.0.71.zip
+   unzip chronocat-llqqntv1-v0.0.71.zip -d /opt/QQ/resources/app/LiteLoader/plugins/ && \
+   rm /tmp/chronocat-llqqntv1-v0.0.71.zip
 
 # 创建必要的目录
 mkdir -p ~/.vnc
@@ -70,4 +69,6 @@ sleep 2
 x11vnc -storepasswd $VNC_PASSWD ~/.vnc/passwd
 sleep 2
 qq --no-sandbox
-" >> ~/.bashrc
+" > /root/start.sh
+
+echo "现在你可以输入命令 bash /root/start.sh 来启动服务
