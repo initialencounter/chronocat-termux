@@ -42,7 +42,7 @@ curl -L -o /tmp/LiteLoaderQQNT.zip https://mirror.ghproxy.com/https://github.com
 
 # 安装chronocat  
 mkdir -p /opt/QQ/resources/app/LiteLoader/plugins && \
-   unzip chronocat-llqqntv1-v0.0.71.zip -d /opt/QQ/resources/app/LiteLoader/plugins/ && \
+   unzip /root/chronocat-llqqntv1-v0.0.71.zip -d /opt/QQ/resources/app/LiteLoader/plugins/ && \
    rm /tmp/chronocat-llqqntv1-v0.0.71.zip
 
 # 创建必要的目录
