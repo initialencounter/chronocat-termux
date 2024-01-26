@@ -30,8 +30,8 @@ git config --global http.sslVerify false && \
     cp /opt/noVNC/vnc.html /opt/noVNC/index.html     
 
 # 安装Linux QQ
-curl -o /root/linuxqq_3.2.5-20979_amd64.deb https://dldir1.qq.com/qqfile/qq/QQNT/c64ca459/linuxqq_3.2.5-20979_amd64.deb && \
-    dpkg -i /root/linuxqq_3.2.5-20979_amd64.deb && apt-get -f install -y && rm /root/linuxqq_3.2.5-20979_amd64.deb
+curl -o /root/linuxqq_3.2.5-20979_arm64.deb https://dldir1.qq.com/qqfile/qq/QQNT/c64ca459/linuxqq_3.2.5-20979_arm64.deb && \
+    dpkg -i /root/linuxqq_3.2.5-20979_arm64.deb && apt-get -f install -y && rm /root/linuxqq_3.2.5-20979_arm64.deb
 
 # 安装LiteLoader
 curl -L -o /tmp/LiteLoaderQQNT.zip https://mirror.ghproxy.com/https://github.com/LiteLoaderQQNT/LiteLoaderQQNT/releases/download/1.0.2/LiteLoaderQQNT.zip && \
