@@ -71,4 +71,4 @@ sleep 2
 qq --no-sandbox
 " > /root/start.sh
 
-echo "现在你可以输入命令 bash /root/start.sh 来启动服务
+echo "现在你可以输入命令 bash /root/start.sh 来启动服务"
