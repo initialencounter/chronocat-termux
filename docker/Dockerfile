@@ -25,7 +25,6 @@ RUN apt-get update && apt-get install -y \
     fonts-wqy-zenhei \
     git \
     gnutls-bin && \    
-    apt purge -y wget unzip && \
     apt autoremove -y && \
     apt clean && \
     rm -rf \
