@@ -24,9 +24,14 @@ RUN apt-get update && apt-get install -y \
     libasound2 \
     fonts-wqy-zenhei \
     git \
-    gnutls-bin \    
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    gnutls-bin && \    
+    apt purge -y wget unzip && \
+    apt autoremove -y && \
+    apt clean && \
+    rm -rf \
+    /var/lib/apt/lists/* \
+    /tmp/* \
+    /var/tmp/*
 
 # 安装novnc
 RUN git config --global http.sslVerify false && \
