@@ -95,4 +95,4 @@ EOM
 
 echo "授予启动脚本执行权限"
 chmod +x $sys_name-$AH.sh
-echo -e "现在可以执行 ./$sys_name-$AH.sh 运行 $sys_name-$AH系统"
+echo -e "现在可以执行 \e[32m./$sys_name-$AH.sh\e[0m 运行 $sys_name-$AH系统"
