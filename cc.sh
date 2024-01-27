@@ -14,7 +14,6 @@ apt-get update && apt-get install -y \
     libnss3 \
     xdg-utils \
     libsecret-1-0 \
-    libgbm1 \
     libasound2 \
     fonts-wqy-zenhei \
     git \
@@ -61,14 +60,14 @@ x11vnc -display :1 -noxrecord -noxfixes -noxdamage -forever -rfbauth ~/.vnc/pass
 sleep 2
 x11vnc -storepasswd vncpasswd ~/.vnc/passwd
 sleep 2
-qq --no-sandbox
+qq --no-sandbox &
 " > /root/start.sh
 
 # 安装chronocat  
 if [ ! -f "/root/chronocat-llqqntv1-v0.0.71.zip" ]; then
     echo "mkdir -p /opt/QQ/resources/app/LiteLoader/plugins
     unzip /root/chronocat-llqqntv1-v0.0.71.zip -d /opt/QQ/resources/app/LiteLoader/plugins/" > /root/next.sh
-    echo "/root/chronocat-llqqntv1-v0.0.71.zip 文件不存在，请下载后执行 next.sh"
+    echo "\e[32m/root/chronocat-llqqntv1-v0.0.71.zip\e[0m 文件不存在，请下载后执行 \e[32mnext.sh\e[0m"
     exit;
 else
     mkdir -p /opt/QQ/resources/app/LiteLoader/plugins
@@ -76,5 +75,7 @@ else
     echo "为了避免此前的事件再次发生，请勿在任何公众平台分享或宣传 Chronocat。"
     echo -e "chronocat 安装完成
 现在你可以输入命令 \e[32mbash debian-sid-arm64.sh\e[0m 进入容器
-再输入命令 \e[32mbash /root/start.sh\e[0m 来启动服务"
+再输入命令 \e[32mbash /root/start.sh\e[0m 来启动服务
+如果需要以无头模式启动;，请修改/root/start.sh
+在 \e[32mqq --no-sandbox\e[0m 末尾添加选项 \e[32m--chrono-mode=headless3\e[0m"
 fi
