@@ -67,7 +67,7 @@ qq --no-sandbox &
 if [ ! -f "/root/chronocat-llqqntv1-v0.0.71.zip" ]; then
     echo "mkdir -p /opt/QQ/resources/app/LiteLoader/plugins
     unzip /root/chronocat-llqqntv1-v0.0.71.zip -d /opt/QQ/resources/app/LiteLoader/plugins/" > /root/next.sh
-    echo "\e[32m/root/chronocat-llqqntv1-v0.0.71.zip\e[0m 文件不存在，请下载后执行 \e[32mnext.sh\e[0m"
+    echo -e "\e[32m/root/chronocat-llqqntv1-v0.0.71.zip\e[0m 文件不存在，请下载后执行 \e[32mnext.sh\e[0m"
     exit;
 else
     mkdir -p /opt/QQ/resources/app/LiteLoader/plugins
