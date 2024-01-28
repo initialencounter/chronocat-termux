@@ -1,7 +1,7 @@
 # 在手机上安装超时空猫猫
 
 本项目提供了在安卓手机上安装 [chronocat](https://chronocat.vercel.app/) 的方法
-使用 [ZeroTermux](https://github.com/hanxinhao000/ZeroTermux) + debian-sid + xfce4 + linuxqq 制作
+使用 [ZeroTermux](https://github.com/hanxinhao000/ZeroTermux) + debian-sid + linuxqq 制作
 
 - 基于 Linux QQ
 - 运行内存大于 600M
