@@ -129,7 +129,7 @@ bash /root/start.sh
 ### 5. 登录qqnt
 ![startqq](./screenshot/startServer.png)
 在终端中输入qq, 回车
-一段时间后桌面会弹出二维码，拿出手机来扫码即可
+一段时间后桌面会弹出二维码，拿出手机来扫码即可, 第一次登录可能会闪退，重新执行命令 `qq --no-sandbox` 即可
 - 注意事项： 
 >登录后qqnt会提醒你更新，不要更新
 登录成功后可以前往 127.0.0.1:5500 查看是否成功接入 chronocat
