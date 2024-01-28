@@ -123,7 +123,7 @@ bash /root/start.sh
 ```
 
 ### 4. 登录vnc
-使用VNC软件登陆服务器IP:5902 默认密码是123456
+使用VNC软件登陆服务器IP:5900 默认密码是vncpasswd
 ![loginVNC](./screenshot/loginVNC.png)
 
 ### 5. 登录qqnt
