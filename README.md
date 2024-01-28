@@ -124,12 +124,10 @@ bash /root/start.sh
 
 ### 4. 登录vnc
 使用VNC软件登陆服务器IP:5900 默认密码是vncpasswd
-![loginVNC](./screenshot/loginVNC.png)
 
 ### 5. 登录qqnt
-![startqq](./screenshot/startServer.png)
 在终端中输入qq, 回车
-一段时间后桌面会弹出二维码，拿出手机来扫码即可, 第一次登录可能会闪退，重新执行命令 `qq --no-sandbox` 即可
+一段时间后桌面会弹出二维码，拿出手机来扫码即可, 第一次登录可能会闪退，重新执行命令 `qq --no-sandbox` 即可， 如需以无头模式启动则执行命令 `qq --no-sandbox --chrono-mode=headless3`
 - 注意事项： 
 >登录后qqnt会提醒你更新，不要更新
 登录成功后可以前往 127.0.0.1:5500 查看是否成功接入 chronocat
