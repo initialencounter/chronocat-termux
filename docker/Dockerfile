@@ -60,7 +60,6 @@ RUN apt-get update && apt-get install -y \
     mkdir -p ~/.vnc && \
 
     # 创建启动脚本
-    sed -i "s/VNC_PASSWD/$VNC_PASSWD/" /root/start.sh && \
     chmod +x /root/start.sh  && \
 
     # 配置supervisor
