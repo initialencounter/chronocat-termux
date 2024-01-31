@@ -5,7 +5,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV VNC_PASSWD=vncpasswd
 ARG TARGETARCH
 ARG BUILD_CHRONO_VERSION
-ENV DEBIAN_FRONTEND=noninteractive
 COPY chronocat-llqqntv1-v0.0.71.zip start.sh /root/
 
 # 安装必要的软件包
