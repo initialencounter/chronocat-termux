@@ -96,7 +96,7 @@
 
 ### 启动脚本
    ```shell
-   #!/bin/bashs
+   #!/bin/bash
    service dbus start
    rm -f /tmp/.X1-lock
    export DISPLAY=:1
@@ -105,11 +105,10 @@
    sleep 2
    x11vnc -display :1 -noxrecord -noxfixes -noxdamage -forever -rfbauth ~/.vnc/passwd &
    sleep 2
-   nohup /opt/noVNC/utils/novnc_proxy --vnc localhost:5900 --listen 6081 --file-only &
+   x11vnc -storepasswd vncpasswd ~/.vnc/passwd
    sleep 2
-   x11vnc -storepasswd $VNC_PASSWD ~/.vnc/passwd
-   sleep 2
-   qq --no-sandbox
+   qq --no-sandbox &
+   bash
    ```
 ### 2.3 使用一键脚本
    ```shell
