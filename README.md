@@ -88,7 +88,7 @@
    ```
 ### 2.2.4[安装chronocat]
    ```shell
-   # 在此之前你需要先下载 chronocat-llqqntv1-v0.0.71.zip
+   # 在此之前你需要先下载 chronocat
    mkdir -p /opt/QQ/resources/app/LiteLoader/plugins && \
    unzip chronocat-llqqntv1-v0.0.71.zip -d /opt/QQ/resources/app/LiteLoader/plugins/ && \
    rm /tmp/chronocat-llqqntv1-v0.0.71.zip
