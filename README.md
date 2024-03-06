@@ -36,9 +36,11 @@
 
 ### 2.1 使用恢复包安装（推荐）
 
+<details>
+  <summary>点击展开内容！</summary>
+
 #### 2.1.1 下载恢复包
 前往 [百度网盘](https://pan.baidu.com/s/1G1_-qzpL3b1bDoqDcWDnlg?pwd=i4bt) 或 [Github releases](https://github.com/initialencounter/chronocat-termux/releases) 下载 ZeroTermux 恢复包, 并将恢复包放在 手机的 `内部存储/xinhao/data/` 目录
-   ![location](./screenshot/location.jpg)
 
 - 注意事项： 
     - 恢复包要放在 `内部存储/xinhao/data/`目录或者 `/sdcard/xinhao/data`目录，否则在恢复容器的时候无法找到恢复包
@@ -47,40 +49,59 @@
 - 打开ZeroTermux
 - 恢复
     进入ZeroTermux 点击音量上键 呼出菜单栏 点击菜单栏的 `备份/恢复` 选择下载的恢复包
-    ![restore](./screenshot/refresh.png)
     输入一个容器名字点击恢复 这个过程需要等待几分钟
-    ![refreshdone](./screenshot/refreshDone.jpg)
 - 切换容器
-   ![switch](./screenshot/switch.png)
     再次点击音量上键， 呼出菜单栏，点击菜单栏的 `容器切换` 选择刚才创建的容器 询问你是否需要重启时， 选择立即重启，接下你将进入启动界面
 
 - 注意事项：
     - 如果音量上键无法呼出菜单，说明你的ZeroTermux版本比较旧，那么可以使用右滑左侧的屏幕边缘来呼出菜单栏
 
+</details>
+
 ### 2.2 使用命令安装（不推荐）
-若你使用的是 `2.1 使用恢复包安装`，请跳过该步骤
+<details>
+  <summary>点击展开内容！</summary>
+
 #### 2.2.1 安装linux容器
    输入命令
    ```shell
-   bash -c "$(curl -L https://gitee.com/initencunter/chronocat-termux/raw/main/debian.sh)"
+   bash -c "$(curl -L https://github.com/LLOneBot/llonebot-termux/raw/main/debian.sh)"
    ```
 #### 2.2.2 安装图形界面 
    ```shell
    # 进入容器
-   bash debian-sid-arm64.sh
-   # 安装 tmoe
-   apt install -y curl ; bash -c "$(curl -L gitee.com/mo2/linux/raw/2/2)"
-   # 一路回车，选择tools
-   # 再选择安装 xfce 图形界面 以及 tigervnc
+   bash bookworm-arm64.sh
+   # 安装图形界面
+   apt-get update && apt-get install -y \
+    openbox \
+    curl \
+    unzip \
+    x11vnc \
+    xvfb \
+    fluxbox \
+    supervisor \
+    libnotify4 \
+    libnss3 \
+    xdg-utils \
+    libsecret-1-0 \
+    libasound2 \
+    fonts-wqy-zenhei \
+    gnutls-bin && \    
+    apt autoremove -y && \
+    apt clean && \
+    rm -rf \
+    /var/lib/apt/lists/* \
+    /tmp/* \
+    /var/tmp/*
    ```
-### 2.2.3 安装 qq
+#### 2.2.3 安装 qq
    ```shell
-   curl -o /root/linuxqq_3.2.5-20979_amd64.deb https://dldir1.qq.com/qqfile/qq/QQNT/c64ca459/linuxqq_3.2.5-20979_amd64.deb && \
-   dpkg -i /root/linuxqq_3.2.5-20979_amd64.deb && apt-get -f install -y && rm /root/linuxqq_3.2.5-20979_amd64.deb
+   curl -o /root/linuxqq_3.2.5-21453_arm64.deb https://dldir1.qq.com/qqfile/qq/QQNT/852276c1/linuxqq_3.2.5-21453_arm64.deb && \
+   dpkg -i /root/linuxqq_3.2.5-21453_arm64.deb && apt-get -f install -y && rm /root/linuxqq_3.2.5-21453_arm64.deb
    ```
-### 2.2.4 [安装liteloader](https://liteloaderqqnt.github.io/guide/install.html)
+#### 2.2.4 [安装liteloader](https://liteloaderqqnt.github.io/guide/install.html)
    ```shell
-   curl -L -o /tmp/LiteLoaderQQNT.zip https://mirror.ghproxy.com/https://github.com/LiteLoaderQQNT/LiteLoaderQQNT/releases/download/1.0.2/LiteLoaderQQNT.zip && \
+   curl -L -o /tmp/LiteLoaderQQNT.zip https://mirror.ghproxy.com/https://github.com/LiteLoaderQQNT/LiteLoaderQQNT/releases/download/1.0.3/LiteLoaderQQNT.zip && \
    mkdir -p /opt/QQ/resources/app/LiteLoader && \
    unzip /tmp/LiteLoaderQQNT.zip -d /opt/QQ/resources/app/LiteLoader && \
    sed -i '1s/^/require("\/opt\/QQ\/resources\/app\/LiteLoader");\n/' /opt/QQ/resources/app/app_launcher/index.js && \
@@ -90,11 +111,9 @@
    ```shell
    # 在此之前你需要先下载 chronocat
    mkdir -p /opt/QQ/resources/app/LiteLoader/plugins && \
-   unzip chronocat-llqqntv1-v0.0.71.zip -d /opt/QQ/resources/app/LiteLoader/plugins/ && \
-   rm /tmp/chronocat-llqqntv1-v0.0.71.zip
+   unzip chronocat.zip -d /opt/QQ/resources/app/LiteLoader/plugins/
    ```
-
-### 启动脚本
+#### 启动脚本
    ```shell
    #!/bin/bash
    service dbus start
@@ -110,9 +129,11 @@
    qq --no-sandbox &
    bash
    ```
+</details>
+
 ### 2.3 使用一键脚本
    ```shell
-   bash -c "$(curl -L https://gitee.com/initencunter/chronocat-termux/raw/main/onekey.sh)"
+   bash -c "$(curl -L https://github.com/initialencounter/chronocat-termux/raw/main/onekey.sh)"
    ```
 ### 3. 启动 VNC
 >如果你使用的是恢复包，VNC将会在进入终端时自启
@@ -131,7 +152,6 @@ bash /root/start.sh
 >登录后qqnt会提醒你更新，不要更新
 登录成功后可以前往 127.0.0.1:5500 查看是否成功接入 chronocat
 若出现以下画面, 恭喜你接入了 chronocat
-[![successed](./screenshot/successed.png)](https://chronocat.vercel.app/connect)
 
 ### 7. 修改chronocat配置
 修改容器目录 /root/.chronocat/config/chronocat.yml，修改后重启 termux

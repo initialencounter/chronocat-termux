@@ -1,7 +1,20 @@
-AH="arm64"
-sys_name="debian-sid"
+if uname -a | grep -q "Android"; then
+    echo "运行环境正确"
+else
+    echo "您的会话正处于 proot 容器内"
+    exit 1
+fi
+
+AH=$(uname -m)
+sys_name="bookworm"
 BAGNAME="rootfs.tar.xz"
-SLEEP_TIME=0.5
+SLEEP_TIME=0.1
+
+if [ "$AH" = "aarch64" ]; then
+    AH="arm64"
+elif [ "$AH" = "x86_64" ]; then
+    AH="amd64"
+fi
 
 cd ~
 # 检测是否安装过
@@ -13,16 +26,21 @@ else
 fi
 
 mkdir $sys_name-$AH
+
+echo "正在切换apt镜像源"
+
+echo "deb https://mirrors.tuna.tsinghua.edu.cn/termux/termux-packages-24 stable main" > $PREFIX/etc/apt/sources.list
+
 apt update
-apt install neofetch wget aria2 proot -y
+apt install neofetch wget aria2 proot git -y
 
 
-echo "即将下载安装debian-sid"
-wget -O default.html "https://mirrors.bfsu.edu.cn/lxc-images/images/debian/sid/arm64/default"
+echo "即将下载安装$sys_name"
+wget -O default.html "https://mirrors.bfsu.edu.cn/lxc-images/images/debian/$sys_name/$AH/default"
 target=$(grep -m 1 -o '<td class="link"><a href=".*" title="' "default.html"| sed 's/<[^>]*>//g')
 date="${target:9:-10}"
 rm -rf default.html
-DEF_CUR="https://mirrors.bfsu.edu.cn/lxc-images/images/debian/sid/arm64/default/$date/rootfs.tar.xz"
+DEF_CUR="https://mirrors.bfsu.edu.cn/lxc-images/images/debian/$sys_name/$AH/default/$date/rootfs.tar.xz"
 echo "======================================="
 echo "==============开始下载================="
 
@@ -32,10 +50,10 @@ echo "======================================="
 
 # 下载rootfs
 if [ -e ${BAGNAME} ]; then
-    tar xf rootfs.tar.xz -C $sys_name-$AH
+    tar -xvf rootfs.tar.xz -C $sys_name-$AH
 else
 	wget ${DEF_CUR}
-	tar xf rootfs.tar.xz -C $sys_name-$AH
+	tar -xvf rootfs.tar.xz -C $sys_name-$AH
 rm -rf ${BAGNAME}
 echo -e "$sys_name-$AH 系统已下载，文件夹名为$sys_name-$AH"
 fi
@@ -60,7 +78,7 @@ rm systeminfo.log
 echo "export  TZ='Asia/Shanghai'" >> $sys_name-$AH/root/.bashrc
 echo "export  TZ='Asia/Shanghai'" >> $sys_name-$AH/etc/profile
 echo "export PULSE_SERVER=tcp:127.0.0.1:4173" >> $sys_name-$AH/etc/profile
-echo "export PULSE_SERVER=tcp:127.0.0.1:4173" >> $sys_name-$AH/root/bashrc
+echo "export PULSE_SERVER=tcp:127.0.0.1:4173" >> $sys_name-$AH/root/.bashrc
 echo 检测到你没有权限读取/proc内的所有文件
 echo 将自动伪造新文件
 mkdir proot_proc
@@ -69,7 +87,7 @@ sleep $SLEEP_TIME
 mkdir tmp
 echo 正在解压伪造文件
 
-tar xJf proot_proc/proc.tar.xz -C tmp 
+tar -xvJf proot_proc/proc.tar.xz -C tmp 
 cp -r tmp/usr/local/etc/tmoe-linux/proot_proc tmp/
 sleep $SLEEP_TIME
 echo 复制文件
@@ -95,4 +113,4 @@ EOM
 
 echo "授予启动脚本执行权限"
 chmod +x $sys_name-$AH.sh
-echo -e "现在可以执行 \e[32m./$sys_name-$AH.sh\e[0m 运行 $sys_name-$AH系统"
+echo -e "现在可以执行 ./$sys_name-$AH.sh 运行 $sys_name-$AH系统"
