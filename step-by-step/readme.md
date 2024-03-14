@@ -21,7 +21,7 @@ bash -c "$(curl -L https://github.com/initialencounter/chronocat-termux/raw/main
 exit
 ```
 
-# 安装 llonebot
+# 安装
 
 ```shell
 bash bookworm-arm64.sh
