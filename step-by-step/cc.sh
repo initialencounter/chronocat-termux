@@ -31,4 +31,4 @@ unzip /tmp/LLWebUiApi.zip -d /opt/QQ/resources/app/LiteLoader/plugins/LLWebUiApi
 
 echo -e "chronocat 安装完成
 现在你可以输入命令 \e[32mbash debian-sid-arm64.sh\e[0m 进入容器
-再输入命令 \e[32mbash /root/start.sh\e[0m 来启动服务
+再输入命令 \e[32mbash /root/start.sh\e[0m 来启动服务"
