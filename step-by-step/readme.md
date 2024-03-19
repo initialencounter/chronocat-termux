@@ -25,6 +25,6 @@ exit
 
 ```shell
 bash bookworm-arm64.sh
-bash -c "$(curl -L https://github.com/initialencounter/chronocat-termux/raw/main/step-by-step/llob.sh)"
+bash -c "$(curl -L https://github.com/initialencounter/chronocat-termux/raw/main/step-by-step/cc.sh)"
 exit
 ```
