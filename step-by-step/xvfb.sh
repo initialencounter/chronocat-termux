@@ -6,12 +6,11 @@ apt update && apt install -y \
     openbox \
     curl \
     unzip \
-    x11vnc \
     xvfb \
-    fluxbox \
     supervisor \
     libnotify4 \
     libnss3 \
+    libxss1 \
     xdg-utils \
     libsecret-1-0 \
     libasound2 \
