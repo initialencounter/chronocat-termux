@@ -59,8 +59,8 @@ exec supervisord &" > /root/start.sh
 # 安装LLWebUiApi
 mkdir -p /opt/QQ/resources/app/LiteLoader/plugins/LLWebUiApi
 curl -L -o /tmp/LLWebUiApi.zip https://mirror.ghproxy.com/https://github.com/LLOneBot/LLWebUiApi/releases/download/v0.0.31/LLWebUiApi.zip
-unzip /tmp/LLWebUiApi.zip -d /opt/QQ/resources/app/LiteLoader/plugins/LLWebUiApi
 mkdir -p /opt/QQ/resources/app/LiteLoader/data/LLWebUiApi
+unzip /tmp/LLWebUiApi.zip -d /opt/QQ/resources/app/LiteLoader/plugins/LLWebUiApi
 echo '{"Server":{"Port":6099},"AutoLogin":true,"BootMode":3,"Debug":false}' > /opt/QQ/resources/app/LiteLoader/data/LLWebUiApi/config.json
 rm /tmp/LLWebUiApi.zip
 
