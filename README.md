@@ -3,7 +3,7 @@
 使用 [ZeroTermux](https://github.com/hanxinhao000/ZeroTermux) + bookworm + linuxqq 制作
 
 - 基于 Linux QQ
-- 运行内存大于 600M
+- 运行内存大于 750M
 - 支持持久化 QQ 登录状态和数据
 
 # 目录：
