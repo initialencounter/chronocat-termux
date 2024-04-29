@@ -25,7 +25,7 @@ apt update && apt install -y \
     /var/tmp/*
 
 # 安装Linux QQ
-curl -o /root/linuxqq.deb https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.5_240305_arm64_01.deb
+curl -o /root/linuxqq.deb https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.7_240428_arm64_01.deb
 dpkg -i /root/linuxqq.deb 
 apt-get -f install -y
 rm /root/linuxqq.deb
