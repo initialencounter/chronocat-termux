@@ -25,10 +25,11 @@ echo '{"Server":{"Port":6099},"AutoLogin":true,"BootMode":3,"Debug":false}' > /o
 rm /tmp/LLWebUiApi.zip
 
 # 安装chronocat  
+version=$(curl -Ls "https://api.github.com/repos/chrononeko/chronocat/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
 mkdir -p /opt/QQ/resources/app/LiteLoader/plugins/
-curl -L -o /tmp/chronocat-llqqnt-engine-chronocat-api.zip https://github.com/chrononeko/chronocat/releases/download/v0.2.9/chronocat-llqqnt-engine-chronocat-api-v0.2.9.zip
-curl -L -o /tmp/chronocat-llqqnt-engine-chronocat-event.zip https://github.com/chrononeko/chronocat/releases/download/v0.2.9/chronocat-llqqnt-engine-chronocat-event-v0.2.9.zip
-curl -L -o /tmp/chronocat-llqqnt.zip https://github.com/chrononeko/chronocat/releases/download/v0.2.9/chronocat-llqqnt-v0.2.9.zip
+curl -L -o /tmp/chronocat-llqqnt-engine-chronocat-api.zip https://github.com/chrononeko/chronocat/releases/download/$version/chronocat-llqqnt-engine-chronocat-api-$version.zip
+curl -L -o /tmp/chronocat-llqqnt-engine-chronocat-event.zip https://github.com/chrononeko/chronocat/releases/download/$version/chronocat-llqqnt-engine-chronocat-event-$version.zip
+curl -L -o /tmp/chronocat-llqqnt.zip https://github.com/chrononeko/chronocat/releases/download/$version/chronocat-llqqnt-$version.zip
 unzip /tmp/chronocat-llqqnt-engine-chronocat-api.zip  -d /opt/QQ/resources/app/LiteLoader/plugins/
 unzip /tmp/chronocat-llqqnt-engine-chronocat-event.zip  -d /opt/QQ/resources/app/LiteLoader/plugins/
 unzip /tmp/chronocat-llqqnt.zip -d /opt/QQ/resources/app/LiteLoader/plugins/

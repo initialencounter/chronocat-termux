@@ -5,7 +5,8 @@ apt-get -f install -y
 rm /root/linuxqq.deb
 
 # 安装LiteLoader
-curl -L -o /tmp/LiteLoaderQQNT.zip https://mirror.ghproxy.com/https://github.com/LiteLoaderQQNT/LiteLoaderQQNT/releases/download/1.1.1/LiteLoaderQQNT.zip
+version=$(curl -Ls "https://api.github.com/repos/LiteLoaderQQNT/LiteLoaderQQNT/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+curl -L -o /tmp/LiteLoaderQQNT.zip https://mirror.ghproxy.com/https://github.com/LiteLoaderQQNT/LiteLoaderQQNT/releases/download/$version/LiteLoaderQQNT.zip
 mkdir -p /opt/QQ/resources/app/LiteLoader
 unzip /tmp/LiteLoaderQQNT.zip -d /opt/QQ/resources/app/LiteLoader
 sed -i '1s/^/require("\/opt\/QQ\/resources\/app\/LiteLoader");\n/' /opt/QQ/resources/app/app_launcher/index.js
