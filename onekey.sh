@@ -2,7 +2,7 @@
 bash -c "$(curl -L https://github.com/initialencounter/chronocat-termux/raw/main/debian.sh)"
 
 # 安装脚本
-wget -O bookworm-arm64/root/cc.sh https://github.com/initialencounter/chronocat-termux/raw/main/cc.sh
+curl -L -o bookworm-arm64/root/cc.sh https://github.com/initialencounter/chronocat-termux/raw/main/cc.sh
 
 # 启动容器并安装
 unset LD_PRELOAD
