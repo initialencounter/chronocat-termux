@@ -7,7 +7,6 @@ apt update && apt install -y \
     curl \
     unzip \
     xvfb \
-    supervisor \
     libnotify4 \
     libnss3 \
     libxss1 \
@@ -15,7 +14,7 @@ apt update && apt install -y \
     libsecret-1-0 \
     libasound2 \
     fonts-wqy-zenhei \
-    git \
+    jq \
     gnutls-bin && \
     apt autoremove -y && \
     apt clean && \

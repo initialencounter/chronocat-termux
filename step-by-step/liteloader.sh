@@ -1,5 +1,8 @@
 # 安装Linux QQ
-curl -o /root/linuxqq.deb https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.8_240520_arm64_01.deb
+# payload=$(curl https://im.qq.com/rainbow/linuxQQDownload | grep -oP "var params= \K\{.*\}(?=;)")
+# amd64_url=$(jq -r .x64DownloadUrl.deb <<< "$payload")
+# arm64_url=$(jq -r .armDownloadUrl.deb <<< "$payload")
+curl -L -o /root/linuxqq.deb https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.12_240902_arm64_01.deb
 dpkg -i /root/linuxqq.deb 
 apt-get -f install -y
 rm /root/linuxqq.deb
