@@ -4,7 +4,7 @@
 使用 [ZeroTermux](https://github.com/hanxinhao000/ZeroTermux) + bookworm + linuxqq 制作
 
 - 基于 Linux QQ
-- 运行内存大于 750M
+- 运行内存大于 600M
 - 支持持久化 QQ 登录状态和数据
 
 # 目录：
@@ -15,7 +15,7 @@
   - 2.2 方法 2. 使用命令安装
   - 2.3 方法 3. 使用一键脚本（推荐）
 - 3. 启动
-- 4. 远程登录 浏览器访问 `http://localhost:6099/api/panel/getQQLoginQRcode`
+- 4. 登录
 - 5. 修改 chronocat 配置
 
 ## 参考与基础
