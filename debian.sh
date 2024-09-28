@@ -423,7 +423,7 @@ install_distro(){
 
 init_dependencies(){
     echo "正在切换apt镜像源"
-    echo "deb https://mirrors.tuna.tsinghua.edu.cn/termux/termux-packages-24 stable main" > $PREFIX/etc/apt/sources.list
+    echo "deb https://mirrors.bfsu.edu.cn/termux/termux-packages-24 stable main" > $PREFIX/etc/apt/sources.list
     apt update
     apt install proot -y
 }
